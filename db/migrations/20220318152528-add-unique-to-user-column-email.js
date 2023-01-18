@@ -1,4 +1,8 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === "production") {
+  options.schema = process.env.SCHEMA;
+};
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
@@ -13,7 +17,7 @@ module.exports = {
           type: Sequelize.DataTypes.STRING(20),
           unique: true,
           allowNull: false
-        });
+        }, options);
   },
 
   down: (queryInterface, Sequelize) => {
@@ -27,6 +31,6 @@ module.exports = {
         return queryInterface.changeColumn('Users','email', { 
           type: Sequelize.DataTypes.STRING(20),
           allowNull: false
-        });
+        }, options);
   }
 };

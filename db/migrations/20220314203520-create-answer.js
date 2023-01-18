@@ -1,4 +1,9 @@
 'use strict';
+let options = {};
+if (process.env.NODE_ENV === "production") {
+  options.schema = process.env.SCHEMA;
+};
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('Answers', {
@@ -39,9 +44,9 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    });
+    }, options);
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Answers');
+    return queryInterface.dropTable('Answers', options);
   }
 };
