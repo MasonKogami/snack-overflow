@@ -43,7 +43,7 @@ module.exports = {
         allowNull: false,
         type: Sequelize.DATE
       }
-    }. options);
+    }, options);
   },
   down: (queryInterface, Sequelize) => {
     return queryInterface.dropTable('Questions', options);
