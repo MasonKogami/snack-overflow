@@ -13,11 +13,11 @@ module.exports = {
       Example:
       return queryInterface.createTable('users', { id: Sequelize.INTEGER });
     */
-        return queryInterface.changeColumn('Users','email', { 
+        return queryInterface.changeColumn(options,'email', { 
           type: Sequelize.DataTypes.STRING(20),
           unique: true,
           allowNull: false
-        }, options);
+        });
   },
 
   down: (queryInterface, Sequelize) => {
@@ -28,9 +28,9 @@ module.exports = {
       Example:
       return queryInterface.dropTable('users');
     */
-        return queryInterface.changeColumn('Users','email', { 
+        return queryInterface.changeColumn(options,'email', { 
           type: Sequelize.DataTypes.STRING(20),
           allowNull: false
-        }, options);
+        });
   }
 };
